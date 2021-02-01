@@ -12,10 +12,12 @@
       }
     } 
 
+    // could use reduce to avoid removing all items with filter 
     if(action.type === "REMOVE_ITEM"){
+      let itemIdx = state.cart.findIndex(item => item.id === action.id);
       return {
         ...state,
-        cart: state.cart.filter(item => item.id !== action.id)
+        cart: state.cart.slice(0,itemIdx).concat(state.cart.slice(itemIdx + 1)),
       }
     } 
 

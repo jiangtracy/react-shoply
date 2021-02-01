@@ -1,3 +1,5 @@
+import Item from "./Item";
+
 /**  Itemlist Component 
  * renders a list of shopping cart items
  * 
@@ -17,14 +19,23 @@ function Itemlist({items, dispatch}) {
     let tags = [];
     for(let [key, value] of inventory) {
       tags.push(
-        //make an item component later
+        <Item 
+            key={key}
+            id={key} 
+            name={value.name} 
+            price={value.price} 
+            description={value.description} 
+            image_url={value.image_url} 
+            dispatch={dispatch} />
       )
     }
     return tags;
   }
 
   return (
-    {generateTags()}
+    <div className="ItemList">
+      {generateTags()}
+    </div>
   )
 }
 
